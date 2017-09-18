@@ -1,3 +1,4 @@
+//Biblioteca do sensor Ultrasonic
 #include <Ultrasonic.h>
 
 //Pinos trigger e echo usado para leitura do sensor.
@@ -6,15 +7,16 @@
 
 Ultrasonic ultrasonic(pino_trigger, pino_echo);
 
-
 void setup() {
-
+  //Abri a comunicação serial com a porta 9600;
   Serial.begin(9600);
-  // put your setup code here, to run once:
-
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  
+  //ler o sensor retornando o o valor do sinal;
+  long microsec = ultrasonic.timing();
+  // retornar em centimetros a distancia do objeto a frente;
+  float centimetros = ultrasonic.convert(microsec, Ultrasonic::CM);
+  
 }
