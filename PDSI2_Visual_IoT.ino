@@ -19,7 +19,7 @@ void teste_Ultrasonic()
   }while(microsec == 1023);
 }
 void teste2()
-{
+{ //calibrar o sensor de presença
   for(int i = 0; i < calibracao; i++){
   Serial.print(".");
   delay(1000);
@@ -29,13 +29,11 @@ void teste2()
 }
 
 void alarme_on()
-{  //Função que ativa o alarme - Detectou presença, o LED Vermelho fica acende
-//E o LED VERDE apaga.
+{  //Função que ativa o alarme - Detectou presença; 
 
 }
 void alarme_off()
-{ //Função que desativa o alarme - N foi detectado presença, o LED Vermelho apaga
-//E o LED VERDE acende. 
+{ //Função que desativa o alarme - N foi detectado presença;
 
 }
    
@@ -67,6 +65,7 @@ void loop()
   long microsec = ultrasonic.timing();
   // retornar em centimetros a distancia do objeto a frente;
   float centimetros = ultrasonic.convert(microsec, Ultrasonic::CM);
+  //retornar distancia em metros.
   String cmMsecToMetersFinal = String(centimetros/100);
   Serial.println(cmMsecToMetersFinal);
   // ler valor do sensor de presença módulo PIR DYP-ME003
@@ -79,10 +78,12 @@ void loop()
     Serial.println("Objeto identificado"); 
    }
     delay(2000);
-
+ // Avaliar se a objeto em movimento detectado
   if (iniciaSensor == 1) {
+    // caso sim avisa 
     alarme_on();
   }else {
+    // casso não num faz nada..
     alarme_off();
   } 
 }
