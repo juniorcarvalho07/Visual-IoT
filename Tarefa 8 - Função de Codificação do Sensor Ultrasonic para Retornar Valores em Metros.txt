@@ -1,0 +1,9 @@
+float Retornar_Distancia_Objetos_Metros(){
+	float c = Retornar_Distancia_Objetos();
+	
+	//retornar distância em metros.
+	float cmMsecToMetersFinal = (c/100);
+
+	return cmMsecToMetersFinal;
+	
+}
