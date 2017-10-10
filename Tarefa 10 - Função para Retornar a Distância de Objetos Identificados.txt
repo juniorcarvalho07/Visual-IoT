@@ -1,0 +1,14 @@
+float Retornar_Distancia_Objetos(){
+	
+	//Teste sensor de presença 
+	iniciaSensor = digitalRead(pinoSensor);
+	
+	//ler o sensor retornando o o valor do sinal;
+	long microsec = ultrasonic.timing();
+	
+	// retornar em centimetros a distancia do objeto a frente;
+	float centimetros = ultrasonic.convert(microsec, Ultrasonic::CM);
+	
+	return centimetros;
+	
+}
