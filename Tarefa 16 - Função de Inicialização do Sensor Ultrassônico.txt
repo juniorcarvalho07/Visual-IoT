@@ -1,0 +1,25 @@
+#include <assert.h>
+#include <Ultrasonic.h> //Biblioteca do sensor Ultrasonic
+
+
+//Define o pino do Arduino a ser utilizado com o pino Trigger do sensor
+#define trigger 4
+
+//Define o pino do Arduino a ser utilizado com o pino Echo do sensor
+#define echo 5
+
+// sensor de presença módulo PIR DYP-ME003
+int sensorPresenca = 3, movimento, cont =0, calibracao = 45,iniciaSensor = 0, pinoSensor = 8;
+
+//Inicializa o sensor ultrasonico
+Ultrasonic ultrasonic(trigger, echo);
+
+void Ultrasonic(){
+	long microsec = 0;
+	
+	do{
+    	microsec = ultrasonic.timing();  //Le os dados do sensor, com o tempo de retorno do sin
+    	Serial.println(microsec);
+    	delay(500);
+	}while(microsec == 1023);
+}
