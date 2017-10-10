@@ -1,8 +1,0 @@
-void setup(){
-	//Abri a comunicação serial com a porta 9600;
-	Serial.begin(9600);
-	pinMode(sensorPresenca, INPUT);
-	pinMode(trigger, OUTPUT);
-	pinMode(echo, INPUT);
-	pinMode(pinoSensor,INPUT);
-}
