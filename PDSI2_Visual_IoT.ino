@@ -17,17 +17,13 @@ static void testeEntradasUltrasonic(){
 Ultrasonic ultrasonic(trigger, echo);
 
 float metros(){
-  
-  //Teste sensor de presença 
-iniciaSensor = digitalRead(pinoSensor);
-  //ler o sensor retornando o o valor do sinal;
-long microsec = ultrasonic.timing();
-  // retornar em centimetros a distancia do objeto a frente;
-float centimetros = ultrasonic.convert(microsec, Ultrasonic::CM);
-  //retornar distancia em metros.
-float cmMsecToMetersFinal = (centimetros/100);
-
-  return cmMsecToMetersFinal;
+  //Teste sensor de Ultrasonic 
+    float cmMsec, DistMetros;
+    long microsec = ultrasonic.timing();
+ 
+    cmMsec = ultrasonic.convert(microsec, Ultrasonic::CM);
+    DistMetros = (cmMsec / 100.0);
+    return DistMetros; 
 }
 void calibrar()
 { //calibrar o sensor de presença
@@ -86,7 +82,6 @@ void loop()
   // 1 teste sensor Ultrasonic;
   if(cont ==0){
     testeEntradasUltrasonic();
-      teste_Ultrasonic();
       calibrar();
       cont=1;
    }else{
