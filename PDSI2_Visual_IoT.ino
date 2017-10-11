@@ -8,7 +8,11 @@
 #define echo 5
 // sensor de presença módulo PIR DYP-ME003
 int sensorPresenca = 3, movimento, cont =0, calibracao = 45,iniciaSensor = 0, pinoSensor = 8;
-
+//teste entradas
+static void testeEntradasUltrasonic(){
+  assert(trigger == 4 && "testTrigger");
+    assert(echo == 5 && "testTrigger");
+}
 Ultrasonic ultrasonic(trigger, echo);
 
 void teste_Ultrasonic()
@@ -90,6 +94,7 @@ void loop()
 {
   // 1 teste sensor Ultrasonic;
   if(cont ==0){
+    testeEntradasUltrasonic();
       teste_Ultrasonic();
       calibrar();
       cont=1;
