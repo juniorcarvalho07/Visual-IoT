@@ -7,7 +7,7 @@
 #define trigger 4
 #define echo 5
 // sensor de presença módulo PIR DYP-ME003
-int sensorPresenca = 3, movimento, cont =0, calibracao = 45,iniciaSensor = 0, pinoSensor = 8;
+int movimento, cont =0, calibracao = 45, pirPin = 3;;
 //teste entradas
 static void testeEntradasUltrasonic(){
   assert(trigger == 4 && "testTrigger");
@@ -33,6 +33,11 @@ void calibrar()
   }
       Serial.println("Sensor Ativado");
       delay(500);
+}
+
+int LerPresenca(){
+ int pirVal = digitalRead(pirPin);
+return pirVal;
 }
 
 void setup()
