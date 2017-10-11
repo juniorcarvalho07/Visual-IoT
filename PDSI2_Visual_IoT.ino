@@ -17,6 +17,14 @@ static void Noparametro(){
     assert((distancia >=0) || (distancia <= 2.0));
 }
 
+static void testecalibramentro(){
+  int cont =0;
+  for(int i = 0; i < calibracao; i++){
+   cont = i+1;
+   }
+   assert(cont = 45 && "testeCalibramento");
+}
+
 Ultrasonic ultrasonic(trigger, echo);
 
 float metros(){
@@ -28,6 +36,7 @@ float metros(){
     DistMetros = (cmMsec / 100.0);
     return DistMetros; 
 }
+
 void calibrar()
 { //calibrar o sensor de presença
   for(int i = 0; i < calibracao; i++){
@@ -68,6 +77,7 @@ void loop()
   // 1 teste sensor Ultrasonic;
   if(cont ==0){
     testeEntradasUltrasonic();
+    testecalibramentro();
       calibrar();
      Noparametro();
       cont=1;
