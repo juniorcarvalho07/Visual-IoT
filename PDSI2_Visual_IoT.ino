@@ -12,6 +12,10 @@ static void testeEntradasUltrasonic(){
   assert(trigger == 4 && "testTrigger");
     assert(echo == 5 && "testTrigger");
 }
+static void Noparametro(){
+    float  distancia = metros();
+    assert((distancia >=0) || (distancia <= 2.0));
+}
 
 Ultrasonic ultrasonic(trigger, echo);
 
@@ -65,6 +69,7 @@ void loop()
   if(cont ==0){
     testeEntradasUltrasonic();
       calibrar();
+     Noparametro();
       cont=1;
    }else{
       
