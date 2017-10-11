@@ -13,17 +13,8 @@ static void testeEntradasUltrasonic(){
   assert(trigger == 4 && "testTrigger");
     assert(echo == 5 && "testTrigger");
 }
-Ultrasonic ultrasonic(trigger, echo);
 
-void teste_Ultrasonic()
-{
-  long microsec = 0;
-  do{
-    microsec = ultrasonic.timing();  
-    Serial.println(microsec);
-    delay(500);
-  }while(microsec == 1023);
-}
+Ultrasonic ultrasonic(trigger, echo);
 
 float metros(){
   
