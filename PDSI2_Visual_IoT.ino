@@ -93,9 +93,10 @@ void loop()
       
    }
   //chamar sensor funcao metro
+ Serial.print("Distancia do Objeto: Metros =>  ");
     Serial.println(metros());
   // ler valor do sensor de presença módulo PIR DYP-ME003
-    presenca();
+  delay(4000);
 }
  
 
