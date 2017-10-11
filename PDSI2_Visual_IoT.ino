@@ -40,6 +40,17 @@ int LerPresenca(){
 return pirVal;
 }
 
+void Movimento(){
+   int  movimento = LerPresenca();
+if(pirVal == LOW){
+Serial.println("movimento detectado");
+delay(2000);
+}
+else
+{
+}
+}
+
 void setup()
 {
   //Abri a comunicação serial com a porta 9600;
@@ -60,10 +71,9 @@ void loop()
    }else{
       
    }
-  //chamar sensor funcao metro
- Serial.print("Distancia do Objeto: Metros =>  ");
-    Serial.println(metros());
-  // ler valor do sensor de presença módulo PIR DYP-ME003
+ Movimento();
+ Serial.print("Distancia do Objeto: Metros =>  "); 
+    Serial.println(metros());//chamar sensor funcao metro
   delay(4000);
 }
  
