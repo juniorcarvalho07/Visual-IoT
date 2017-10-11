@@ -35,38 +35,6 @@ void calibrar()
       delay(500);
 }
 
-void presenca(){
-
-movimento = digitalRead(sensorPresenca);
-
- if(movimento == LOW)
-   {
-      Serial.println("Sem presenca");
-   }else{
-      Serial.println("Objeto identificado"); 
-   }
-      delay(2000);
- // Avaliar se a objeto em movimento detectado
-  if (iniciaSensor == 1) {
-    // caso sim avisa 
-      alarme_on();
-  }else {
-    // casso não num faz nada..
-      alarme_off();
-  }
-}
-
-void alarme_on()
-{  //Função que ativa o alarme - Detectou presença; 
-
-}
-void alarme_off()
-{ //Função que desativa o alarme - N foi detectado presença;
-
-}
-   
-
-
 void setup()
 {
   //Abri a comunicação serial com a porta 9600;
