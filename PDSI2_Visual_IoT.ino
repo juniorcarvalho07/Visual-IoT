@@ -1,4 +1,3 @@
-//Biblioteca do sensor Ultrasonic
 #include <assert.h>
 #include <Ultrasonic.h>
 
@@ -7,7 +6,7 @@
 #define trigger 4
 #define echo 5
 // sensor de presença módulo PIR DYP-ME003
-int movimento, cont =0, calibracao = 45, pirPin = 3;;
+int movimento, cont =0, calibracao = 45, pirPin = 3;
 //teste entradas
 static void testeEntradasUltrasonic(){
   assert(trigger == 4 && "testTrigger");
@@ -42,7 +41,7 @@ return pirVal;
 
 void Movimento(){
    int  movimento = LerPresenca();
-if(pirVal == LOW){
+if(movimento == LOW){
 Serial.println("movimento detectado");
 delay(2000);
 }
@@ -55,10 +54,9 @@ void setup()
 {
   //Abri a comunicação serial com a porta 9600;
   Serial.begin(9600);
-  pinMode(sensorPresenca, INPUT);
   pinMode(trigger, OUTPUT);
+  pinMode(pirPin, INPUT);
   pinMode(echo, INPUT);
-  pinMode(pinoSensor,INPUT);
 }
 
 void loop()
@@ -77,4 +75,3 @@ void loop()
   delay(4000);
 }
  
-
