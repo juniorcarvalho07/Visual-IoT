@@ -6,7 +6,7 @@
 #define trigger 4
 #define echo 5
 // sensor de presença módulo PIR DYP-ME003
-int movimento, cont =0, calibracao = 45, pirPin = 3;
+int movimento, cont =0, calibracao = 45, pirPin = 3, cali = 0;
 //teste entradas
 
 static void Noparametro(){
@@ -15,11 +15,9 @@ static void Noparametro(){
 }
 
 static void testecalibramentro(){
-  int cont =0;
-  for(int i = 0; i < calibracao; i++){
-   cont = i+1;
-   }
-   assert(cont = 45 && "testeCalibramento");
+  int cont = 0;
+    cont = calibrar();
+    assert(cont = 44 && "testeCalibramento");
 }
 
 Ultrasonic ultrasonic(trigger, echo);
@@ -34,14 +32,16 @@ float metros(){
     return DistMetros; 
 }
 
-void calibrar()
+int calibrar()
 { //calibrar o sensor de presença
   for(int i = 0; i < calibracao; i++){
       Serial.print(".");
       delay(1000);
+      
   }
       Serial.println("Sensor Ativado");
       delay(500);
+   return i 
 }
 
 int LerPresenca(){
@@ -71,10 +71,11 @@ void setup()
 
 void loop()
 {
+   
   // 1 teste sensor Ultrasonic;
   if(cont ==0){
     testecalibramentro();
-      calibrar();
+     cali = calibrar();
      Noparametro();
       cont=1;
    }else{
