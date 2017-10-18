@@ -8,10 +8,7 @@
 // sensor de presença módulo PIR DYP-ME003
 int movimento, cont =0, calibracao = 45, pirPin = 3;
 //teste entradas
-static void testeEntradasUltrasonic(){
-  assert(trigger == 4 && "testTrigger");
-    assert(echo == 5 && "testTrigger");
-}
+
 static void Noparametro(){
     float  distancia = metros();
     assert((distancia >=0) || (distancia <= 2.0));
@@ -76,7 +73,6 @@ void loop()
 {
   // 1 teste sensor Ultrasonic;
   if(cont ==0){
-    testeEntradasUltrasonic();
     testecalibramentro();
       calibrar();
      Noparametro();
