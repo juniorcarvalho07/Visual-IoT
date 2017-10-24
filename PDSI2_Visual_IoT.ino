@@ -14,9 +14,15 @@
 #define echo3 5
 
 static void Noparametro1(){
-    float  distancia = metros();
+    float  distancia = metros1();
     assert((distancia >=0) || (distancia <= 2.0));
 }
+
+static void Noparametro2(){
+    float  distancia = metros2();
+    assert((distancia >=0) || (distancia <= 2.0));
+}
+
 
 Ultrasonic ultrasonic(trigger, echo);
 
