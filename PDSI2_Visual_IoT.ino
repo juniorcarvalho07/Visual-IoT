@@ -24,7 +24,9 @@ static void Noparametro2(){
 }
 
 
-Ultrasonic ultrasonic(trigger, echo);
+Ultrasonic ultrasonic(trigger1, echo1);
+Ultrasonic ultrasonic(trigger2, echo2);
+Ultrasonic ultrasonic(trigger3, echo3);
 
 float metros(){
   //Teste sensor de Ultrasonic 
