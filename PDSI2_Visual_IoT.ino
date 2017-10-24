@@ -3,13 +3,17 @@
 
 
 //Pinos trigger e echo usado para leitura do sensor Ultrasonic.
-#define trigger 4
-#define echo 5
-// sensor de presença módulo PIR DYP-ME003
-int movimento, cont =0, calibracao = 45, pirPin = 3, cali = 0;
-//teste entradas
+//Sensor ultrasonic 1
+#define trigger1 4
+#define echo1 5
+//Sensor ultrasonic 2
+#define trigger2 4
+#define echo2 5
+//Sensor ultrasonic 3
+#define trigger3 4
+#define echo3 5
 
-static void Noparametro(){
+static void Noparametro1(){
     float  distancia = metros();
     assert((distancia >=0) || (distancia <= 2.0));
 }
@@ -57,9 +61,9 @@ void loop()
    
   // 1 teste sensor Ultrasonic;
   if(cont ==0){
-    testecalibramentro();
-     cali = calibrar();
-     Noparametro();
+     Noparametro1();
+     Noparametro2();
+     Noparametro3();
       cont=1;
    }else{
       
