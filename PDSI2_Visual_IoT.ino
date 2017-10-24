@@ -32,17 +32,6 @@ float metros(){
     return DistMetros; 
 }
 
-int calibrar()
-{ //calibrar o sensor de presença
-  for(int i = 0; i < calibracao; i++){
-      Serial.print(".");
-      delay(1000);
-      
-  }
-      Serial.println("Sensor Ativado");
-      delay(500);
-   return i 
-}
 
 int LerPresenca(){
  int pirVal = digitalRead(pirPin);
