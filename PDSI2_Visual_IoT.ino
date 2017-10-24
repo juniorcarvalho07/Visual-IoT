@@ -62,9 +62,12 @@ void setup()
 {
   //Abri a comunicação serial com a porta 9600;
   Serial.begin(9600);
-  pinMode(trigger, OUTPUT);
-  pinMode(pirPin, INPUT);
-  pinMode(echo, INPUT);
+  pinMode(trigger1, OUTPUT);
+  pinMode(echo1, INPUT);
+  pinMode(trigger2, OUTPUT);
+  pinMode(echo2, INPUT);
+  pinMode(trigger3, OUTPUT);
+  pinMode(echo3, INPUT);
 }
 
 void loop()
@@ -79,9 +82,12 @@ void loop()
    }else{
       
    }
- Movimento();
- Serial.print("Distancia do Objeto: Metros =>  "); 
-    Serial.println(metros());//chamar sensor funcao metro
+ 	Serial.print("Distancia do Objeto do sensor 1: Metros =>  "); 
+    Serial.println(metros1());//chamar sensor funcao metro
+	Serial.print("Distancia do Objeto do sensor 2: Metros =>  "); 
+    Serial.println(metros2());//chamar sensor funcao metro
+	Serial.print("Distancia do Objeto do sensor 3: Metros =>  "); 
+    Serial.println(metros3());//chamar sensor funcao metro
   delay(4000);
 }
  
