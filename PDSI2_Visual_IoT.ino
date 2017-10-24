@@ -9,11 +9,6 @@
 int movimento, cont =0, calibracao = 45, pirPin = 3, cali = 0;
 //teste entradas
 
-static void testePresenca(){
-    int binario = LerPresenca();
-    assert((binario == 1 ) || (binario == 0));
-
-}
 static void Noparametro(){
     float  distancia = metros();
     assert((distancia >=0) || (distancia <= 2.0));
