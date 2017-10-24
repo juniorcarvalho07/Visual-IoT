@@ -14,12 +14,6 @@ static void Noparametro(){
     assert((distancia >=0) || (distancia <= 2.0));
 }
 
-static void testecalibramentro(){
-  int cont = 0;
-    cont = calibrar();
-    assert(cont == 44 && "testeCalibramento");
-}
-
 Ultrasonic ultrasonic(trigger, echo);
 
 float metros(){
