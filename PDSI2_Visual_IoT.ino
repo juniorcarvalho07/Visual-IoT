@@ -58,18 +58,6 @@ float metros3(){
     return DistMetros; 
 }
 
-
-void Movimento(){
-   int  movimento = LerPresenca();
-if(movimento == LOW){
-Serial.println("movimento detectado");
-delay(2000);
-}
-else
-{
-}
-}
-
 void setup()
 {
   //Abri a comunicação serial com a porta 9600;
