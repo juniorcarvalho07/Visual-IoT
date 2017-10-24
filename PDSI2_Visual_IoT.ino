@@ -59,14 +59,6 @@ float metros3(){
 }
 
 
-
-
-
-int LerPresenca(){
- int pirVal = digitalRead(pirPin);
-return pirVal;
-}
-
 void Movimento(){
    int  movimento = LerPresenca();
 if(movimento == LOW){
