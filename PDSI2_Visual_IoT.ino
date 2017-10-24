@@ -24,19 +24,30 @@ static void Noparametro2(){
 }
 
 
-Ultrasonic ultrasonic(trigger1, echo1);
-Ultrasonic ultrasonic(trigger2, echo2);
-Ultrasonic ultrasonic(trigger3, echo3);
+Ultrasonic ultrasonic1(trigger1, echo1);
+Ultrasonic ultrasonic2(trigger2, echo2);
+Ultrasonic ultrasonic3(trigger3, echo3);
 
-float metros(){
+float metros1(){
   //Teste sensor de Ultrasonic 
     float cmMsec, DistMetros;
-    long microsec = ultrasonic.timing();
+    long microsec = ultrasonic1.timing();
  
     cmMsec = ultrasonic.convert(microsec, Ultrasonic::CM);
     DistMetros = (cmMsec / 100.0);
     return DistMetros; 
 }
+
+float metros2(){
+  //Teste sensor de Ultrasonic 
+    float cmMsec, DistMetros;
+    long microsec = ultrasonic2.timing();
+ 
+    cmMsec = ultrasonic.convert(microsec, Ultrasonic::CM);
+    DistMetros = (cmMsec / 100.0);
+    return DistMetros; 
+}
+
 
 
 int LerPresenca(){
