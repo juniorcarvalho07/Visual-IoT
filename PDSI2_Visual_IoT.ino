@@ -48,6 +48,18 @@ float metros2(){
     return DistMetros; 
 }
 
+float metros3(){
+  //Teste sensor de Ultrasonic 
+    float cmMsec, DistMetros;
+    long microsec = ultrasonic2.timing();
+ 
+    cmMsec = ultrasonic.convert(microsec, Ultrasonic::CM);
+    DistMetros = (cmMsec / 100.0);
+    return DistMetros; 
+}
+
+
+
 
 
 int LerPresenca(){
