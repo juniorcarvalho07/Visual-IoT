@@ -7,11 +7,11 @@
 #define trigger1 4
 #define echo1 5
 //Sensor ultrasonic 2
-#define trigger2 4
-#define echo2 5
+#define trigger2 6
+#define echo2 7
 //Sensor ultrasonic 3
-#define trigger3 4
-#define echo3 5
+#define trigger3 8
+#define echo3 9
 
 static void Noparametro1(){
     float  distancia = metros1();
