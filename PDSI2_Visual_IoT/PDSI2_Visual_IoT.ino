@@ -18,7 +18,7 @@
 #define RX 11
 int contador = 0;
 
-String comando, recebido;
+String comando, recebido, mensagem1, mensagem2, mensagem3;
 
 
 static void Noparametro1(){
@@ -86,6 +86,7 @@ void loop()
 {
 float distancia1 = 0,distancia2 = 0, distancia3 = 0; 
   // 1 teste sensor Ultrasonic;
+  String sensor1,sensor2,sensor3;
   if(contador ==0){
      Noparametro1();
      Noparametro2();
@@ -97,13 +98,33 @@ float distancia1 = 0,distancia2 = 0, distancia3 = 0;
    distancia1 = metros1();
    distancia2 = metros2();
    distancia3 = metros3();
- 	Serial.print("Distancia do Objeto do sensor 1: Metros =>  "); 
-    Serial.println(distancia1);//chamar sensor funcao metro
-	Serial.print("Distancia do Objeto do sensor 2: Metros =>  "); 
-    Serial.println(distancia2);//chamar sensor funcao metro
-	Serial.print("Distancia do Objeto do sensor 3: Metros =>  "); 
-    Serial.println(distancia3);//chamar sensor funcao metro
-  delay(4000);
+
+   sensor1 = (mensagem1,"%f", distancia1);
+   sensor2 = (mensagem2,"%f", distancia2);
+   sensor2 = (mensagem3,"%f", distancia3);
+   
+   Serial.println(sensor1);//chamar sensor funcao metro
+	 Serial.println(sensor2);//chamar sensor funcao metro
+   Serial.println(sensor3);//chamar sensor funcao metro
+   
+   //enviando dados sensor1
+   recebido = "";
+   recebido = sensor1;
+   bluetooth.println(recebido);
+   delay(100);
+
+   //enviando dados sensor2
+   recebido = "";
+   recebido = sensor2;
+   bluetooth.println(recebido);
+   delay(100);
+
+  //enviando dados sensor3
+   recebido = "";
+   recebido = sensor3;
+   bluetooth.println(recebido);
+   delay(100);
+  
   
 }
  
