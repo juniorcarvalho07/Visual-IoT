@@ -13,6 +13,7 @@
 #define trigger3 8
 #define echo3 9
 
+int contador = 0;
 static void Noparametro1(){
     float  distancia = metros1();
     assert((distancia >=0) || (distancia <= 2.0));
@@ -23,6 +24,10 @@ static void Noparametro2(){
     assert((distancia >=0) || (distancia <= 2.0));
 }
 
+static void Noparametro3(){
+    float  distancia = metros3();
+    assert((distancia >=0) || (distancia <= 2.0)); 
+}
 
 Ultrasonic ultrasonic1(trigger1, echo1);
 Ultrasonic ultrasonic2(trigger2, echo2);
@@ -33,7 +38,7 @@ float metros1(){
     float cmMsec, DistMetros;
     long microsec = ultrasonic1.timing();
  
-    cmMsec = ultrasonic.convert(microsec, Ultrasonic::CM);
+    cmMsec = ultrasonic1.convert(microsec, Ultrasonic::CM);
     DistMetros = (cmMsec / 100.0);
     return DistMetros; 
 }
@@ -43,7 +48,7 @@ float metros2(){
     float cmMsec, DistMetros;
     long microsec = ultrasonic2.timing();
  
-    cmMsec = ultrasonic.convert(microsec, Ultrasonic::CM);
+    cmMsec = ultrasonic2.convert(microsec, Ultrasonic::CM);
     DistMetros = (cmMsec / 100.0);
     return DistMetros; 
 }
@@ -51,9 +56,9 @@ float metros2(){
 float metros3(){
   //Teste sensor de Ultrasonic 
     float cmMsec, DistMetros;
-    long microsec = ultrasonic2.timing();
+    long microsec = ultrasonic3.timing();
  
-    cmMsec = ultrasonic.convert(microsec, Ultrasonic::CM);
+    cmMsec = ultrasonic3.convert(microsec, Ultrasonic::CM);
     DistMetros = (cmMsec / 100.0);
     return DistMetros; 
 }
@@ -74,11 +79,11 @@ void loop()
 {
    
   // 1 teste sensor Ultrasonic;
-  if(cont ==0){
+  if(contador ==0){
      Noparametro1();
      Noparametro2();
      Noparametro3();
-      cont=1;
+      contador=1;
    }else{
       
    }
