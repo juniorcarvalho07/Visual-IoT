@@ -13,7 +13,9 @@
 //Sensor ultrasonic 3
 #define trigger3 8
 #define echo3 9
-
+//Pinos do bluetooth
+#define TX 10
+#define RX 11
 int contador = 0;
 
 String comando, recebido;
@@ -44,7 +46,6 @@ float metros1(){
   //Teste sensor de Ultrasonic 
     float cmMsec, DistMetros;
     long microsec = ultrasonic1.timing();
- 
     cmMsec = ultrasonic1.convert(microsec, Ultrasonic::CM);
     DistMetros = (cmMsec / 100.0);
     return DistMetros; 
@@ -54,7 +55,6 @@ float metros2(){
   //Teste sensor de Ultrasonic 
     float cmMsec, DistMetros;
     long microsec = ultrasonic2.timing();
- 
     cmMsec = ultrasonic2.convert(microsec, Ultrasonic::CM);
     DistMetros = (cmMsec / 100.0);
     return DistMetros; 
@@ -64,7 +64,6 @@ float metros3(){
   //Teste sensor de Ultrasonic 
     float cmMsec, DistMetros;
     long microsec = ultrasonic3.timing();
- 
     cmMsec = ultrasonic3.convert(microsec, Ultrasonic::CM);
     DistMetros = (cmMsec / 100.0);
     return DistMetros; 
@@ -74,6 +73,7 @@ void setup()
 {
   //Abri a comunicação serial com a porta 9600;
   Serial.begin(9600);
+  bluetooth.begin(9600);
   pinMode(trigger1, OUTPUT);
   pinMode(echo1, INPUT);
   pinMode(trigger2, OUTPUT);
@@ -84,7 +84,7 @@ void setup()
 
 void loop()
 {
-   
+float distancia1 = 0,distancia2 = 0, distancia3 = 0; 
   // 1 teste sensor Ultrasonic;
   if(contador ==0){
      Noparametro1();
@@ -94,12 +94,16 @@ void loop()
    }else{
       
    }
+   distancia1 = metros1();
+   distancia2 = metros2();
+   distancia3 = metros3();
  	Serial.print("Distancia do Objeto do sensor 1: Metros =>  "); 
-    Serial.println(metros1());//chamar sensor funcao metro
+    Serial.println(distancia1);//chamar sensor funcao metro
 	Serial.print("Distancia do Objeto do sensor 2: Metros =>  "); 
-    Serial.println(metros2());//chamar sensor funcao metro
+    Serial.println(distancia2);//chamar sensor funcao metro
 	Serial.print("Distancia do Objeto do sensor 3: Metros =>  "); 
-    Serial.println(metros3());//chamar sensor funcao metro
+    Serial.println(distancia3);//chamar sensor funcao metro
   delay(4000);
+  
 }
  
