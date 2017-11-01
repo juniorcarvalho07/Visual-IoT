@@ -113,6 +113,14 @@ float distancia1 = 0,distancia2 = 0, distancia3 = 0;
    }else{
       
    }
+
+if(bluetooth.available()){
+    while(bluetooth.available()){
+    char caractere =  bluetooth.read();
+    comando += caractere;
+  }
+
+}  
    distancia1 = metros1();
    distancia2 = metros2();
    distancia3 = metros3();
