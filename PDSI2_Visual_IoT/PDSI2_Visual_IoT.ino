@@ -26,19 +26,14 @@ static void Noparametro1(){
     assert((distancia >=0) || (distancia <= 2.0));
 }
 
-static void Noparametro2(){
-    float  distancia = metros2();
-    assert((distancia >=0) || (distancia <= 2.0));
-}
-
-static void Noparametro3(){
-    float  distancia = metros3();
-    assert((distancia >=0) || (distancia <= 2.0)); 
-}
-
 static void TestErro1(){
     float  distancia = metros1();
     assert((distancia < 0) || (distancia > 2.0)); 
+}
+
+static void Noparametro2(){
+    float  distancia = metros2();
+    assert((distancia >=0) || (distancia <= 2.0));
 }
 
 static void TestErro2(){
@@ -46,6 +41,15 @@ static void TestErro2(){
     assert((distancia < 0) || (distancia > 2.0)); 
 }
 
+static void Noparametro3(){
+    float  distancia = metros3();
+    assert((distancia >=0) || (distancia <= 2.0)); 
+}
+
+static void TestErro3(){
+    float  distancia = metros3();
+    assert((distancia < 0) || (distancia > 2.0)); 
+}
 
 SoftwareSerial bluetooth(10,11);
 
@@ -104,6 +108,7 @@ float distancia1 = 0,distancia2 = 0, distancia3 = 0;
      Noparametro2();
      TestErro2();
      Noparametro3();
+     TestErro3();
       contador=1;
    }else{
       
