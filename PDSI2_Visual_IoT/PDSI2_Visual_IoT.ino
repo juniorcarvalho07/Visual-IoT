@@ -36,6 +36,12 @@ static void Noparametro3(){
     assert((distancia >=0) || (distancia <= 2.0)); 
 }
 
+static void TestErro1(){
+    float  distancia = metros1();
+    assert((distancia < 0) || (distancia > 2.0)); 
+}
+
+
 SoftwareSerial bluetooth(10,11);
 
 Ultrasonic ultrasonic1(trigger1, echo1);
@@ -89,6 +95,7 @@ float distancia1 = 0,distancia2 = 0, distancia3 = 0;
   String sensor1,sensor2,sensor3;
   if(contador ==0){
      Noparametro1();
+     TestErro1();
      Noparametro2();
      Noparametro3();
       contador=1;
