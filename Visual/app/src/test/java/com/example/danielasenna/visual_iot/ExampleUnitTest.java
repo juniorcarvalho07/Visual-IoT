@@ -1,4 +1,4 @@
-package com.example.danielasenna.visual;
+package com.example.danielasenna.visual_iot;
 
 import org.junit.Test;
 
