@@ -20,36 +20,42 @@ int contador = 0;
 String comando, recebido, mensagem1, mensagem2, mensagem3;
 
 
-//static void Noparametro1(){
-  //float  distancia = metros1();
-    //assert((distancia >=0) || (distancia <= 2.0));
-//}
+/*static void Noparametro1(){
+  float  distancia = metros1();
+    assert((distancia >=0) && (distancia <= 2.0));
+    Serial.println("passou teste 1");
+}
 
-//static void TestErro1(){
-   // float  distancia = metros1();
-   // assert((distancia < 0) || (distancia > 2.0)); 
-//}
+static void TestErro1(){
+    float  distancia = metros1();
+    assert((distancia < 0) && (distancia > 2.0)); 
+    Serial.println("Erro 1");
+}
 
-//static void Noparametro2(){
-//    float  distancia = metros2();
-  //  assert((distancia >=0) || (distancia <= 2.0));
-//}
+static void Noparametro2(){
+    float  distancia = metros2();
+    assert((distancia >=0) && (distancia <= 2.0));
+    Serial.println("passou teste 2");
+}
 
-//static void TestErro2(){
-  //  float  distancia = metros2();
-   // assert((distancia < 0) || (distancia > 2.0)); 
-//}
+static void TestErro2(){
+    float  distancia = metros2();
+    assert((distancia < 0) && (distancia > 2.0)); 
+    Serial.println("Erro 2");
+}
 
-//static void Noparametro3(){
-  //  float  distancia = metros3();
-    //assert((distancia >=0) || (distancia <= 2.0)); 
-//}
+static void Noparametro3(){
+    float  distancia = metros3();
+    assert((distancia >=0) && (distancia <= 2.0));
+    Serial.println("passou teste 3"); 
+}
 
-//static void TestErro3(){
-    //float  distancia = metros3();
-  //  assert((distancia < 0) || (distancia > 2.0)); 
-//}
-
+static void TestErro3(){
+    float  distancia = metros3();
+    assert((distancia < 0) && (distancia > 2.0)); 
+    Serial.println("Erro 3");
+}
+*/
 SoftwareSerial bluetooth(10,11);
 
 Ultrasonic ultrasonic1(trigger1, echo1);
@@ -100,18 +106,20 @@ void loop()
 {
 float distancia1 = 0,distancia2 = 0, distancia3 = 0; 
   // 1 teste sensor Ultrasonic;
-  String sensor1,sensor2,sensor3;
-  if(contador ==0){
-    // Noparametro1();
-    // TestErro1();
-    // Noparametro2();
-    // TestErro2();
-    // Noparametro3();
-    // TestErro3();
+  String sensor= "", mensagem1="1 = " ,mensagem2="2 = ",mensagem3 = "2 = ";
+  /*if(contador ==0){
+     Noparametro1();
+     Noparametro2();
+     Noparametro3();
+     break;
+      TestErro1();
+      TestErro2();
+      TestErro3();
+      
       contador=1;
    }else{
       
-   }
+   }*/
 
 if(bluetooth.available()){
     while(bluetooth.available()){
@@ -123,33 +131,15 @@ if(bluetooth.available()){
    distancia1 = metros1();
    distancia2 = metros2();
    distancia3 = metros3();
-   mensagem1= "Bundinha 1=";
-
-   sensor1 = (distancia1);
-   sensor2 = (distancia2);
-   sensor3 = (distancia3);
-   
-   Serial.println("1="+sensor1);//chamar sensor funcao metro
-	 Serial.println("2="+sensor2);//chamar sensor funcao metro
-   Serial.println("3="+sensor3);//chamar sensor funcao metro
-  
+   sensor =(mensagem1+distancia1+mensagem2+distancia2+mensagem3+distancia3);
+   Serial.println(sensor);//chamar sensor funcao metro
+	 
    delay(1000);
   
    //enviando dados sensor1
    recebido = "";
-   recebido = sensor1;
+   recebido = sensor;
    bluetooth.println(recebido);
-   
-   //enviando dados sensor2
-   recebido = "";
-   recebido = sensor2;
-   bluetooth.println(recebido);
-   
-  //enviando dados sensor3
-   recebido = "";
-   recebido = sensor3;
-   bluetooth.println(recebido);
-   
   
 }
  
