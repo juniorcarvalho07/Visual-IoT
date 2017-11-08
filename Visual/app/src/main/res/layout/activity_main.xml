@@ -7,18 +7,36 @@
     android:background="@android:color/white"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/sens"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#1ca00c"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_margin="12dp"
+            android:text="Aguardando Conexão ... "/>
+
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
 
         <TextView
             android:id="@+id/sensora"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:layout_weight="1"
             android:text="Sensor A"
             android:textAlignment="center"
@@ -26,11 +44,13 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
+
+
         <TextView
             android:id="@+id/sensorb"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:layout_weight="1"
             android:text="Sensor B"
             android:textAlignment="center"
@@ -42,42 +62,79 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/m1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:text="Aguardando ..."
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+
+
+
+        <TextView
+            android:id="@+id/m2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:text="Aguardando ..."
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/gif1"
+            android:layout_width="0dp"
+            android:layout_height="140dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/ripples" />
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/gif2"
+            android:layout_width="0dp"
+            android:layout_height="140dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/ripples" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <pl.droidsonroids.gif.GifImageView
-            android:layout_marginTop="-20dp"
-            android:id="@+id/gifImageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="0.2"
-            android:src="@drawable/ripples" />
-
-        <pl.droidsonroids.gif.GifImageView
-            android:layout_marginTop="-20dp"
-            android:id="@+id/gifImageVieww"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="0.2"
-            android:src="@drawable/ripples" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="-50dp"
-        android:layout_width="match_parent"
-        android:layout_height="47dp"
-        android:orientation="horizontal"
-        android:layout_marginBottom="3dp">
 
         <TextView
             android:id="@+id/sensorc"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_weight="1"
@@ -87,24 +144,45 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
 
+        <TextView
+            android:id="@+id/m3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:text="Aguardando ..."
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
 
         <pl.droidsonroids.gif.GifImageView
-            android:layout_marginTop="-35dp"
-            android:id="@+id/gifImageViewww"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:id="@+id/gif3"
+            android:layout_width="0dp"
+            android:layout_height="140dp"
             android:layout_gravity="center"
-            android:layout_weight="0.2"
+            android:layout_weight="1"
             android:src="@drawable/ripples" />
+
 
     </LinearLayout>
 

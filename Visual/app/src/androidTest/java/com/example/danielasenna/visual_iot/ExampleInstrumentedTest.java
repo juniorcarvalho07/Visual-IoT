@@ -1,4 +1,4 @@
-package com.example.danielasenna.visual;
+package com.example.danielasenna.visual_iot;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.danielasenna.visual", appContext.getPackageName());
+        assertEquals("com.example.danielasenna.visual_iot", appContext.getPackageName());
     }
 }
