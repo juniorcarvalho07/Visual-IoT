@@ -163,6 +163,7 @@ public class MainActivity extends Activity {
 
 					verificarValorSensorA(dados[0]);
 					verificarValorSensorB(dados[1]);
+					verificarValorSensorB(dados[2]);
 
 				} catch (Exception e) {
 					m1.setText(dataString);
@@ -222,6 +223,29 @@ public class MainActivity extends Activity {
 
 	}
 
+	
+	// Esse método verifica a distância do sensor C e reproduz um som para avisar da identificação de um objeto
+	private static void verificarValorSensorC(String valor) {
+
+		try {
+			float v = Float.parseFloat(valor);
+
+			mp = MediaPlayer.create(a, R.raw.item3);
+
+
+			if (v <= 1.0f) {
+
+				if (mp.isPlaying())
+					mp.stop();
+				mp.start();
+
+			} else {
+				mp.stop();
+			}
+
+		} catch (Exception e) {}
+
+	}
 
 	
 	/* Esse método é invocado sempre que o usuário clicar na TextView
