@@ -199,6 +199,20 @@ public class ConnectionThread extends Thread{
         }
 
     }
+		
+	/*  Método Utiliza um handler para enviar um byte array à Activity principal.
+	O byte array é encapsulado em um Bundle e posteriormente em uma Message
+	antes de ser enviado.
+	 */
+	private void toMainActivity(byte[] data) {
+
+		Message message = new Message();
+		Bundle bundle = new Bundle();
+		bundle.putByteArray("data", data);
+		message.setData(bundle);
+		MainActivity.handler.sendMessage(message);
+	}
+
 
 
 
