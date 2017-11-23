@@ -43,4 +43,163 @@ public class ConnectionThread extends Thread{
     }
 
 
+    /*  O método run() contem as instruções que serão efetivamente realizadas
+    em uma nova thread.
+    */
+    public void run() {
+
+    /*  Anuncia que a thread está sendo executada.
+        Pega uma referência para o adaptador Bluetooth padrão.
+     */
+        this.running = true;
+        BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
+
+    /*  Determina que ações executar dependendo se a thread está configurada
+    para atuar como servidor ou cliente.
+     */
+        if(this.server) {
+
+        /*  Servidor.
+         */
+            try {
+
+            /*  Cria um socket de servidor Bluetooth.
+                O socket servidor será usado apenas para iniciar a conexão.
+                Permanece em estado de espera até que algum cliente
+            estabeleça uma conexão.
+             */
+                btServerSocket = btAdapter.listenUsingRfcommWithServiceRecord("Super Counter", UUID.fromString(myUUID));
+                btSocket = btServerSocket.accept();
+
+            /*  Se a conexão foi estabelecida corretamente, o socket
+            servidor pode ser liberado.
+             */
+                if(btSocket != null) {
+
+                    btServerSocket.close();
+                }
+
+            } catch (IOException e) {
+
+            /*  Caso ocorra alguma exceção, exibe o stack trace para debug.
+                Envia um código para a Activity principal, informando que
+            a conexão falhou.
+             */
+                e.printStackTrace();
+                toMainActivity("---N".getBytes());
+            }
+
+
+        } else {
+
+        /*  Cliente.
+         */
+            try {
+
+            /*  Obtem uma representação do dispositivo Bluetooth com
+            endereço btDevAddress.
+                Cria um socket Bluetooth.
+             */
+                BluetoothDevice btDevice = btAdapter.getRemoteDevice(btDevAddress);
+                btSocket = btDevice.createRfcommSocketToServiceRecord(UUID.fromString(myUUID));
+
+            /*  Envia ao sistema um comando para cancelar qualquer processo
+            de descoberta em execução.
+             */
+                btAdapter.cancelDiscovery();
+
+            /*  Solicita uma conexão ao dispositivo cujo endereço é
+            btDevAddress.
+                Permanece em estado de espera até que a conexão seja
+            estabelecida.
+             */
+                if (btSocket != null) {
+                    btSocket.connect();
+                }
+
+            } catch (IOException e) {
+
+            /*  Caso ocorra alguma exceção, exibe o stack trace para debug.
+                Envia um código para a Activity principal, informando que
+            a conexão falhou.
+             */
+                e.printStackTrace();
+                toMainActivity("---N".getBytes());
+            }
+
+        }
+
+    /*  Pronto, estamos conectados! Agora, só precisamos gerenciar a conexão.
+        ...
+     */
+
+        if(btSocket != null) {
+
+        /*  Envia um código para a Activity principal informando que a
+        a conexão ocorreu com sucesso.
+         */
+            this.isConnected = true;
+            toMainActivity("---S".getBytes());
+
+            try {
+
+            /*  Obtem referências para os fluxos de entrada e saída do
+            socket Bluetooth.
+             */
+                input = btSocket.getInputStream();
+                output = btSocket.getOutputStream();
+
+            /*  Permanece em estado de espera até que uma mensagem seja
+            recebida.
+                Armazena a mensagem recebida no buffer.
+                Envia a mensagem recebida para a Activity principal, do
+            primeiro ao último byte lido.
+                Esta thread permanecerá em estado de escuta até que
+            a variável running assuma o valor false.
+             */
+                while(running) {
+
+                /*  Cria um byte array para armazenar temporariamente uma
+                mensagem recebida.
+                    O inteiro bytes representará o número de bytes lidos na
+                última transmissão recebida.
+                    O inteiro bytesRead representa o número total de bytes
+                lidos antes de uma quebra de linha. A quebra de linha
+                representa o fim da mensagem.
+                 */
+                    byte[] buffer = new byte[1024];
+                    int bytes;
+                    int bytesRead = -1;
+
+                /*  Lê os bytes recebidos e os armazena no buffer até que
+                uma quebra de linha seja identificada. Nesse ponto, assumimos
+                que a mensagem foi transmitida por completo.
+                 */
+                    do {
+                        bytes = input.read(buffer, bytesRead+1, 1);
+                        bytesRead+=bytes;
+                    } while(buffer[bytesRead] != '\n');
+
+                /*  A mensagem recebida é enviada para a Activity principal.
+                 */
+                    toMainActivity(Arrays.copyOfRange(buffer, 0, bytesRead-1));
+
+                }
+
+            } catch (IOException e) {
+
+            /*  Caso ocorra alguma exceção, exibe o stack trace para debug.
+                Envia um código para a Activity principal, informando que
+            a conexão falhou.
+             */
+                e.printStackTrace();
+                toMainActivity("---N".getBytes());
+                this.isConnected = false;
+            }
+        }
+
+    }
+
+
+
 }
