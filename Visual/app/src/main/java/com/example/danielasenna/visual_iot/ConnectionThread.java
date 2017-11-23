@@ -213,31 +213,49 @@ public class ConnectionThread extends Thread{
 		MainActivity.handler.sendMessage(message);
 	}
 	
-	/*  Método utilizado pela Activity principal para transmitir uma mensagem ao
-	outro lado da conexão.
+	/*  Método utilizado pela Activity principal para transmitir uma mensagem ao outro lado da conexão.
 	A mensagem deve ser representada por um byte array.
 	*/
 	public void write(byte[] data) {
 
-    if(output != null) {
-        try {
+		if(output != null) {
+			try {
 
-        /*  Transmite a mensagem.
-         */
-            output.write(data);
+			/*  Transmite a mensagem.
+			 */
+				output.write(data);
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    } else {
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
 
-    /*  Envia à Activity principal um código de erro durante a conexão.
-     */
-        toMainActivity("---N".getBytes());
-    }
-}
+		/*  Envia à Activity principal um código de erro durante a conexão.
+		 */
+			toMainActivity("---N".getBytes());
+		}
+	}
 
+	/*  Método utilizado pela Activity principal para encerrar a conexão
+	 */
+	public void cancel() {
 
+		try {
 
+			running = false;
+			this.isConnected = false;
+			btServerSocket.close();
+			btSocket.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		running = false;
+		this.isConnected = false;
+	}
+
+	public boolean isConnected() {
+		return this.isConnected;
+	}
 
 }
