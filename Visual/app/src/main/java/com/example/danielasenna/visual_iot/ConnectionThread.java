@@ -212,6 +212,30 @@ public class ConnectionThread extends Thread{
 		message.setData(bundle);
 		MainActivity.handler.sendMessage(message);
 	}
+	
+	/*  Método utilizado pela Activity principal para transmitir uma mensagem ao
+	outro lado da conexão.
+	A mensagem deve ser representada por um byte array.
+	*/
+	public void write(byte[] data) {
+
+    if(output != null) {
+        try {
+
+        /*  Transmite a mensagem.
+         */
+            output.write(data);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } else {
+
+    /*  Envia à Activity principal um código de erro durante a conexão.
+     */
+        toMainActivity("---N".getBytes());
+    }
+}
 
 
 
