@@ -54,7 +54,7 @@ public class MainActivity extends Activity {
         // Depois de obter a instância da classe Bluetooth verifica-se o aparelho tem suporte a Bluetooth.
         // Se o valor de retorno da instância for igual a null, quer dizer que o aparelho não tem suporte a Bluetooth.
         if(btAdapter == null){
-            Toast.makeText(getApplicationContext(), "Seu dispositivo não possui Bluetooth", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Seu disposit ivo não possui Bluetooth", Toast.LENGTH_LONG).show();
         }else {
             // Depois de obter a instância e caso não seja null
             // é necessário checar se o aparelho está com o Bluetooth ativado.
