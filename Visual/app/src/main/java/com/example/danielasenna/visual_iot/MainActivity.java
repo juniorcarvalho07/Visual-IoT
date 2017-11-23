@@ -20,7 +20,11 @@ public class MainActivity extends Activity {
     static TextView m1;
     static TextView m2;
     static TextView m3;
-
+	
+	ConnectionThread connect;
+	
+	static Activity a;
+	
 
     // Esse método verifica se o aparelho possui Bluetooth e se o mesmo esta ativado
     // Caso não esteja ativado, o Bluetooth é ativado
@@ -38,7 +42,11 @@ public class MainActivity extends Activity {
         m2 = (TextView) findViewById(R.id.m2);
         m3 = (TextView) findViewById(R.id.m3);
 
+		// Definição de uma Activity alternativa
+		Activity a1 = this;
+		a = a1;
 
+	
         // Antes de tentar buscar ou conectar a outros dispositivos,
         // é importante garantir que o aplicativo está sendo executado
         // em um aparelho que suporta a funcionalidade Bluetooth e
@@ -75,6 +83,23 @@ public class MainActivity extends Activity {
             sem pedido de autorização do usuário. É altamente não recomendado no
             Android Developers.
          */
+		
+		/* Definição da thread de conexão como cliente.
+        Aqui, você deve incluir o endereço MAC do seu módulo Bluetooth.
+        O app iniciará e vai automaticamente buscar por esse endereço.
+        Caso não encontre, dirá que houve um erro de conexão.
+		 */
+		connect = new ConnectionThread("98:D3:36:00:9D:51");
+		connect.start();
+
+		/* Um descanso rápido, para evitar bugs esquisitos.
+		 */
+		try {
+			Thread.sleep(1000);
+		} catch (Exception E) {
+			E.printStackTrace();
+		}
+
     }
 
 
