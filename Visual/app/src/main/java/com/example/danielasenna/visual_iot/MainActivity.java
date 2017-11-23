@@ -161,7 +161,7 @@ public class MainActivity extends Activity {
 					m2.setText(dados[1]);
 					m3.setText(dados[2]);
 
-					
+					verificarValorSensorA(dados[0]);
 
 				} catch (Exception e) {
 					m1.setText(dataString);
@@ -175,6 +175,30 @@ public class MainActivity extends Activity {
 		}
 	};
 	
+	// Esse método verifica a distância do sensor A e reproduz um som para avisar da identificação de um objeto
+	private static void verificarValorSensorA(String valor) {
+
+		try {
+			float v = Float.parseFloat(valor);
+
+			mp = MediaPlayer.create(a, R.raw.item1);
+
+
+			if (v <= 1.0f) {
+
+				if (mp.isPlaying())
+					mp.stop();
+				mp.start();
+
+			} else {
+				mp.stop();
+			}
+
+		} catch (Exception e) {}
+
+	}
+
+	
 	/* Esse método é invocado sempre que o usuário clicar na TextView
 	que contem o contador. O app Android transmite a string "restart",
 	seguido de uma quebra de linha, que é o indicador de fim de mensagem.
@@ -182,7 +206,7 @@ public class MainActivity extends Activity {
 	public void restartCounter(View view) {
 		connect.write("restart\n".getBytes());
 	}
-
+	
 
 
 
