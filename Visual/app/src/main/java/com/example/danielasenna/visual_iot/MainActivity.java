@@ -85,15 +85,15 @@ public class MainActivity extends Activity {
          */
 		
 		/* Definição da thread de conexão como cliente.
-        Aqui, você deve incluir o endereço MAC do seu módulo Bluetooth.
-        O app iniciará e vai automaticamente buscar por esse endereço.
-        Caso não encontre, dirá que houve um erro de conexão.
-		 */
+		Aqui, você deve incluir o endereço MAC do seu módulo Bluetooth.
+		O app iniciará e vai automaticamente buscar por esse endereço.
+		Caso não encontre, dirá que houve um erro de conexão.
+		*/
 		connect = new ConnectionThread("98:D3:36:00:9D:51");
 		connect.start();
 
 		/* Um descanso rápido, para evitar bugs esquisitos.
-		 */
+		*/
 		try {
 			Thread.sleep(1000);
 		} catch (Exception E) {
@@ -101,6 +101,89 @@ public class MainActivity extends Activity {
 		}
 
     }
+	
+		
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu_main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+
+		//noinspection SimplifiableIfStatement
+		if (id == R.id.action_settings) {
+			return true;
+		}
+
+		return super.onOptionsItemSelected(item);
+	}
+
+
+	public static Handler handler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+
+			/* Esse método é invocado na Activity principal
+				sempre que a thread de conexão Bluetooth recebe
+				uma mensagem.
+			 */
+			Bundle bundle = msg.getData();
+			byte[] data = bundle.getByteArray("data");
+			String dataString= new String(data);
+
+			/* Aqui ocorre a decisão de ação, baseada na string
+				recebida. Caso a string corresponda à uma das
+				mensagens de status de conexão (iniciadas com --),
+				atualizamos o status da conexão conforme o código.
+			 */
+			if(dataString.equals("---N"))
+				status.setText("Ocorreu um erro durante a conexão");
+			else if(dataString.equals("---S"))
+				status.setText("Conectado");
+			else {
+
+				/* Se a mensagem não for um código de status,
+					então ela deve ser tratada pelo aplicativo
+					como uma mensagem vinda diretamente do outro
+					lado da conexão. Nesse caso, simplesmente
+					atualizamos o valor contido no TextView.
+				 */
+				String dados[] = dataString.split("&");
+				try {
+					m1.setText(dados[0]);
+					m2.setText(dados[1]);
+					m3.setText(dados[2]);
+
+					
+
+				} catch (Exception e) {
+					m1.setText(dataString);
+					m2.setText(dataString);
+					m3.setText(dataString);
+				}
+
+
+			}
+
+		}
+	};
+	
+	/* Esse método é invocado sempre que o usuário clicar na TextView
+	que contem o contador. O app Android transmite a string "restart",
+	seguido de uma quebra de linha, que é o indicador de fim de mensagem.
+	*/
+	public void restartCounter(View view) {
+		connect.write("restart\n".getBytes());
+	}
+
+
 
 
 }
