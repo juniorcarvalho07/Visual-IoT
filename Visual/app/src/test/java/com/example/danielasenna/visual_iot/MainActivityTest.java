@@ -25,6 +25,10 @@ public class MainActivityTest {
         assertTrue(a);
     }
 
-
+	@Test
+    public void testverificarValorSensorA3() throws Exception {
+        boolean a = m.verificarValorSensorA(4);
+        assertFalse(a);
+    }
 
 }
