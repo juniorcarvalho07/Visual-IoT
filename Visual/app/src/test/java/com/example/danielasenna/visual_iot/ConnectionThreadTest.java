@@ -26,4 +26,11 @@ public class ConnectionThreadTest {
         assertFalse(a);
         assertFalse(b);
     }
+	
+	@Test
+    public void isConnected() throws Exception {
+        boolean a = c.isConnected;
+
+        assertFalse(a);
+    }
 }
