@@ -36,5 +36,11 @@ public class MainActivityTest {
         boolean a = m.verificarValorSensorA((float) 0.5);
         assertTrue(a);
     }
+	
+	@Test
+    public void testverificarValorSensorB1() throws Exception {
+        boolean a = m.verificarValorSensorB(3);
+        assertFalse(a);
+    }
 
 }
