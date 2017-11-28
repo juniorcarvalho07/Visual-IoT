@@ -13,11 +13,11 @@
 //Sensor ultrasonic 3
 #define trigger3 8
 #define echo3 9//Pinos do bluetooth
+
 #define TX 10
 #define RX 11
-int contador = 0;
 
-String comando, recebido, mensagem1, mensagem2, mensagem3;
+String comando ="";
 
 
 /*static void Noparametro1(){
@@ -94,19 +94,13 @@ void setup()
   //Abri a comunicação serial com a porta 9600;
   Serial.begin(9600);
   bluetooth.begin(9600);
-  pinMode(trigger1, OUTPUT);
-  pinMode(echo1, INPUT);
-  pinMode(trigger2, OUTPUT);
-  pinMode(echo2, INPUT);
-  pinMode(trigger3, OUTPUT);
-  pinMode(echo3, INPUT);
 }
 
 void loop()
 {
-float distancia1 = 0,distancia2 = 0, distancia3 = 0; 
+float d1=0, d2=0, d3=0; 
   // 1 teste sensor Ultrasonic;
-  String sensor= "", mensagem1="1 = " ,mensagem2="2 = ",mensagem3 = "2 = ";
+  String sensor= "", mensagem="&";
   /*if(contador ==0){
      Noparametro1();
      Noparametro2();
@@ -128,18 +122,17 @@ if(bluetooth.available()){
   }
 
 }  
-   distancia1 = metros1();
-   distancia2 = metros2();
-   distancia3 = metros3();
-   sensor =(mensagem1+distancia1+mensagem2+distancia2+mensagem3+distancia3);
+   d1 = metros1();
+   d2 = metros2();
+   d3 = metros3();
+   sensor =(d1+mensagem+d2+mensagem+d3);
+   Serial.println("Distancia em M: ");
    Serial.println(sensor);//chamar sensor funcao metro
 	 
-   delay(1000);
   
-   //enviando dados sensor1
-   recebido = "";
-   recebido = sensor;
-   bluetooth.println(recebido);
-  
+   bluetooth.println(sensor);
+
+     delay(1000);
+
 }
  
