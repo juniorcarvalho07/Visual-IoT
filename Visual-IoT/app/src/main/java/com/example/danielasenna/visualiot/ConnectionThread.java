@@ -40,6 +40,13 @@ public class ConnectionThread extends Thread{
 
         this.server = false;
         this.btDevAddress = btDevAddress;
+
+        MAC();
+    }
+
+
+    public boolean MAC(){
+        return btDevAddress != null;
     }
 
 

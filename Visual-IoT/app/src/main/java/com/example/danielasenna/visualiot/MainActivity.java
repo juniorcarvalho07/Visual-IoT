@@ -7,9 +7,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -103,29 +100,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-
     public static Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -157,18 +131,12 @@ public class MainActivity extends AppCompatActivity {
 				 */
                 String dados[] = dataString.split("&");
                 try {
-                    if(Float.parseFloat(dados[0]) < 1.0f || Float.parseFloat(dados[1]) < 1.0f || Float.parseFloat(dados[2]) < 1.0f){
-                        m1.setText(dados[0]+" Cm");
-                        m2.setText(dados[1]+" Cm");
-                        m3.setText(dados[2]+" Cm");
 
-                    }else{
-                        if(Float.parseFloat(dados[0]) >= 1.0f || Float.parseFloat(dados[1]) >= 1.0f || Float.parseFloat(dados[2]) >= 1.0f){
-                            m1.setText(dados[0]+" M");
-                            m2.setText(dados[1]+" M");
-                            m3.setText(dados[2]+" M");
-                        }
-                    }
+                    m1.setText(dados[0]);
+                    m2.setText(dados[1]);
+                    m3.setText(dados[2]);
+
+
 
                     verificarValorSensorA(Float.parseFloat(dados[0]));
                     verificarValorSensorB(Float.parseFloat(dados[1]));
@@ -261,14 +229,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         return v3 <= 1.0f;
-    }
-
-    /* Esse método é invocado sempre que o usuário clicar na TextView
-    que contem o contador. O app Android transmite a string "restart",
-    seguido de uma quebra de linha, que é o indicador de fim de mensagem.
-    */
-    public void restartCounter(View view) {
-        connect.write("restart\n".getBytes());
     }
 
 }

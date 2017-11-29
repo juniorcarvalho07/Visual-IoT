@@ -1,5 +1,7 @@
 package com.example.danielasenna.visualiot;
 
+import android.view.Menu;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,7 +14,7 @@ public class MainActivityTest {
 
     MainActivity m = new MainActivity();
 
-   
+
     @Test
     public void testverificarValorSensorA1() throws Exception {
         boolean a = m.verificarValorSensorA(3);
