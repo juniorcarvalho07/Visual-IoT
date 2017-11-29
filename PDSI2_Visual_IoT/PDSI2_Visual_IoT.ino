@@ -21,8 +21,13 @@
 #define RX 11
 
 
-String comando = "";
+String comando ="";
 
+/*static void Noparametro1(){
+  float  distancia = metros1();
+    assert((distancia >=0) && (distancia <= 2.0));
+    Serial.println("passou teste 1");
+}
 
 /*static void Noparametro1(){
   float  distancia = metros1();
@@ -106,13 +111,18 @@ float metros3(){
     return DistMetros; 
 }
 
+void setup()
+{
+  //Abri a comunicação serial com a porta 9600;
+  Serial.begin(9600);
+  bluetooth.begin(9600);
+}
+
 void loop()
 {
-
-  float d1 = 0, d2 = 0, d3 = 0; 
-  
+float d1=0, d2=0, d3=0; 
+  // 1 teste sensor Ultrasonic;
   String sensor= "", mensagem="&";
-
   /*if(contador ==0){
      Noparametro1();
      Noparametro2();
