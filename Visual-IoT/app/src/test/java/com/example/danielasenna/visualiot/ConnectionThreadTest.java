@@ -18,14 +18,6 @@ public class ConnectionThreadTest {
         assertTrue(a);
     }
 
-    @Test
-    public void cancel() throws Exception {
-        boolean a = c.isConnected;
-        boolean b = c.running;
-
-        assertFalse(a);
-        assertFalse(b);
-    }
 
     @Test
     public void isConnected() throws Exception {
@@ -33,6 +25,13 @@ public class ConnectionThreadTest {
 
         assertFalse(a);
     }
+
+    @Test
+    public void testMAC2() throws Exception {
+        boolean a = c.MAC();
+        assertFalse(a);
+    }
+
 
 
 
