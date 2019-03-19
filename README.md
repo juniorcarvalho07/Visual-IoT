@@ -1,12 +1,12 @@
 # Visual-IoT
 
-Projeto para controle e racionalmente de aula com Internet das Coisas (Placa arduino) na linguagem C.
+# Projeto para controle e racionalmente de aula com Internet das Coisas (Placa arduino) na linguagem C.
 
-Sensores
+# Sensores
 
 Sensor de umidade de solo
 
-Temperatura
+# Temperatura
 
 Comunicação
 
